@@ -12,6 +12,10 @@ pipeline {
             }
         }
         stage("test") { // Renamed to "test"
+            when{
+                expresiion {
+                    params.executeTests
+                }
             steps {
                 echo 'testing the application...'
             }
