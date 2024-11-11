@@ -1,4 +1,4 @@
-def buidApp() {
+def buildApp() {
   echo 'building the applictaion'
 }
 def testApp() {
