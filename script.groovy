@@ -2,7 +2,7 @@ def buidApp() {
   echo 'building the applictaion'
 }
 def testApp() {
-  echo 'testing 
+  echo 'testing the application'
 }
 def deployApp() {
   echo 'deploying the applictaion'
