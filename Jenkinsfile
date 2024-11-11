@@ -9,19 +9,17 @@ pipeline {
         stage("init") {
             steps {
                 script {
-                    gv=load "script.groovy"
+                    gv = load "script.groovy"
                 }
             }
-     }
-    stages {
+        }
         stage("build") {
             steps {
-                  script {
+                script {
                     gv.buildApp()
                 }
             }
         }
-    }
         stage("test") {
             when {
                 expression {
@@ -29,8 +27,8 @@ pipeline {
                 }
             }
             steps {
-               script {
-                    gv.testdApp()
+                script {
+                    gv.testApp()  // Corrected from testdApp to testApp
                 }
             }
         }
@@ -41,6 +39,5 @@ pipeline {
                 }
             }
         }
-    
-}
+    }
 }
