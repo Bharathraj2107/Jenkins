@@ -1,15 +1,16 @@
+// Jenkinsfile
 def gv
 pipeline {
     agent any
     parameters {
-        choice(name: 'VERSION', choices: ['1.1.0', '1.2.0', '1.3.0'], description: '')
-        booleanParam(name: 'executeTests', defaultValue: true, description: '')
+        choice(name: 'VERSION', choices: ['1.1.0', '1.2.0', '1.3.0'], description: 'Choose the version to deploy')
+        booleanParam(name: 'executeTests', defaultValue: true, description: 'Execute tests before deploying')
     }
     stages {
         stage("init") {
             steps {
                 script {
-                    gv = load "script.groovy"
+                    gv = load "script.groovy"  // Load the external Groovy script
                 }
             }
         }
@@ -23,12 +24,12 @@ pipeline {
         stage("test") {
             when {
                 expression {
-                    params.executeTests
+                    params.executeTests  // Only run tests if 'executeTests' is true
                 }
             }
             steps {
                 script {
-                    gv.testApp()  // Corrected from testdApp to testApp
+                    gv.testApp()
                 }
             }
         }
